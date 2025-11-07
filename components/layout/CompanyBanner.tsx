@@ -4,6 +4,7 @@ import React from 'react';
 import { AppBar, Toolbar, Typography, Avatar, Box, IconButton } from '@mui/material';
 import { Notifications, Settings } from '@mui/icons-material';
 import { CompanyInfo } from './types';
+import { layoutColors } from '@/app/theme';
 
 interface CompanyBannerProps {
   companyInfo: CompanyInfo;
@@ -11,13 +12,13 @@ interface CompanyBannerProps {
 
 export default function CompanyBanner({ companyInfo }: CompanyBannerProps) {
   return (
-    <AppBar 
-      position="fixed" 
-      sx={{ 
+    <AppBar
+      position="fixed"
+      sx={{
         zIndex: (theme) => theme.zIndex.drawer + 1,
-        bgcolor: 'background.paper',
-        color: 'text.primary',
-        boxShadow: 1,
+        bgcolor: layoutColors.primaryMenu,
+        color: '#ffffff',
+        boxShadow: 3,
       }}
     >
       <Toolbar>
@@ -58,7 +59,7 @@ export default function CompanyBanner({ companyInfo }: CompanyBannerProps) {
                   {companyInfo.userInfo.name}
                 </Typography>
                 {companyInfo.userInfo.role && (
-                  <Typography variant="caption" color="text.secondary">
+                  <Typography variant="caption" sx={{ opacity: 0.9 }}>
                     {companyInfo.userInfo.role}
                   </Typography>
                 )}

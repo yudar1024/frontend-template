@@ -19,6 +19,7 @@ import {
   ChevronRight,
 } from '@mui/icons-material';
 import { MenuItem } from './types';
+import { layoutColors } from '@/app/theme';
 
 interface SecondaryMenuProps {
   items: MenuItem[];
@@ -49,21 +50,32 @@ function MenuItemComponent({
 
   return (
     <>
-      <ListItemButton 
+      <ListItemButton
         onClick={handleClick}
-        sx={{ 
+        sx={{
           pl: 2 + level * 2,
           justifyContent: collapsed ? 'center' : 'flex-start',
+          color: '#424242',
+          '&:hover': {
+            bgcolor: layoutColors.secondaryMenuHover,
+          },
+          '&.Mui-selected': {
+            bgcolor: layoutColors.secondaryMenuSelected,
+            color: '#ffffff',
+            '&:hover': {
+              bgcolor: '#616161',
+            },
+          },
         }}
       >
         {item.icon && (
-          <ListItemIcon sx={{ minWidth: collapsed ? 0 : 40 }}>
+          <ListItemIcon sx={{ minWidth: collapsed ? 0 : 40, color: 'inherit' }}>
             {item.icon}
           </ListItemIcon>
         )}
         {!collapsed && (
           <>
-            <ListItemText 
+            <ListItemText
               primary={item.label}
               primaryTypographyProps={{
                 fontSize: level > 0 ? '0.875rem' : '1rem',
@@ -104,6 +116,8 @@ export default function SecondaryMenu({ items, open, onToggle }: SecondaryMenuPr
           boxSizing: 'border-box',
           top: 120, // AppBar + PrimaryMenu height
           height: 'calc(100% - 120px)',
+          bgcolor: layoutColors.secondaryMenu,
+          borderRight: '1px solid #e0e0e0',
           transition: (theme) =>
             theme.transitions.create('width', {
               easing: theme.transitions.easing.sharp,
@@ -116,11 +130,11 @@ export default function SecondaryMenu({ items, open, onToggle }: SecondaryMenuPr
       <Box sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
         {/* Toggle Button */}
         <Box sx={{ display: 'flex', justifyContent: 'flex-end', p: 1 }}>
-          <IconButton onClick={onToggle} size="small">
+          <IconButton onClick={onToggle} size="small" sx={{ color: '#616161' }}>
             {open ? <ChevronLeft /> : <ChevronRight />}
           </IconButton>
         </Box>
-        <Divider />
+        <Divider sx={{ borderColor: '#e0e0e0' }} />
         
         {/* Menu Items */}
         <List component="nav" sx={{ flexGrow: 1, overflow: 'auto' }}>

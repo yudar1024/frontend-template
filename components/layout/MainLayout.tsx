@@ -52,6 +52,8 @@ export default function MainLayout({
           items={primaryMenuItems}
           activeMenu={activeMenu}
           onMenuChange={handleMenuChange}
+          sidebarOpen={sidebarOpen}
+          hasSecondaryMenu={secondaryMenuItems.length > 0}
         />
       </Box>
 
