@@ -34,45 +34,52 @@ export default function PrimaryMenu({
   return (
     <Box
       sx={{
-        borderBottom: 1,
-        borderColor: 'rgba(255, 255, 255, 0.12)',
+        borderBottom: `1px solid ${layoutColors.primaryMenuBorder}`,
         bgcolor: layoutColors.primaryMenu,
         position: 'sticky',
         top: 64, // AppBar height
         zIndex: (theme) => theme.zIndex.drawer,
-        display: 'flex',
-        justifyContent: 'flex-end',
         paddingLeft: `${leftOffset}px`,
         transition: (theme) =>
           theme.transitions.create('padding-left', {
             easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.enteringScreen,
           }),
-        boxShadow: 2,
       }}
     >
       <Tabs
         value={activeMenu}
         onChange={handleChange}
         sx={{
-          width: '100%',
+          minHeight: 48,
+          px: 3,
           '& .MuiTabs-flexContainer': {
-            justifyContent: 'space-evenly',
-            gap: 2,
+            gap: 1,
           },
           '& .MuiTab-root': {
-            color: 'rgba(255, 255, 255, 0.7)',
+            minHeight: 48,
+            px: 3,
+            py: 1.5,
+            color: layoutColors.primaryMenuText,
+            fontSize: '0.875rem',
+            fontWeight: 500,
+            textTransform: 'none',
+            letterSpacing: '-0.01em',
+            borderRadius: '6px',
+            transition: 'all 0.2s ease',
             '&.Mui-selected': {
-              color: '#ffffff',
+              color: layoutColors.primaryMenuActive,
+              bgcolor: 'transparent',
             },
             '&:hover': {
-              color: '#ffffff',
-              bgcolor: 'rgba(255, 255, 255, 0.08)',
+              color: layoutColors.primaryMenuActive,
+              bgcolor: layoutColors.primaryMenuHover,
             },
           },
           '& .MuiTabs-indicator': {
-            backgroundColor: '#ffffff',
-            height: 3,
+            backgroundColor: layoutColors.primaryMenuIndicator,
+            height: 2,
+            borderRadius: '2px 2px 0 0',
           },
         }}
       >
@@ -84,9 +91,9 @@ export default function PrimaryMenu({
             icon={item.icon}
             iconPosition="start"
             sx={{
-              minHeight: 56,
-              flex: 1,
-              maxWidth: 'none',
+              '& .MuiSvgIcon-root': {
+                fontSize: '1.125rem',
+              },
             }}
           />
         ))}
