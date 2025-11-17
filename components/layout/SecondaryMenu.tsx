@@ -128,24 +128,24 @@ export default function SecondaryMenu({ items, open, onToggle }: SecondaryMenuPr
       }}
     >
       <Box sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
-        {/* Toggle Button */}
-        <Box sx={{ display: 'flex', justifyContent: 'flex-end', p: 1 }}>
-          <IconButton onClick={onToggle} size="small" sx={{ color: '#616161' }}>
-            {open ? <ChevronLeft /> : <ChevronRight />}
-          </IconButton>
-        </Box>
-        <Divider sx={{ borderColor: '#e0e0e0' }} />
-        
         {/* Menu Items */}
-        <List component="nav" sx={{ flexGrow: 1, overflow: 'auto' }}>
+        <List component="nav" sx={{ flexGrow: 1, overflow: 'auto', pt: 0 }}>
           {items.map((item) => (
-            <MenuItemComponent 
-              key={item.id} 
-              item={item} 
+            <MenuItemComponent
+              key={item.id}
+              item={item}
               collapsed={!open}
             />
           ))}
         </List>
+
+        {/* Toggle Button at Bottom */}
+        <Divider sx={{ borderColor: '#e0e0e0' }} />
+        <Box sx={{ display: 'flex', justifyContent: 'center', p: 1 }}>
+          <IconButton onClick={onToggle} size="small" sx={{ color: '#616161' }}>
+            {open ? <ChevronLeft /> : <ChevronRight />}
+          </IconButton>
+        </Box>
       </Box>
     </Drawer>
   );
