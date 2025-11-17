@@ -17,7 +17,7 @@ export default function CompanyBanner({ companyInfo }: CompanyBannerProps) {
       elevation={0}
       sx={{
         zIndex: (theme) => theme.zIndex.drawer + 1,
-        bgcolor: layoutColors.banner,
+        bgcolor: layoutColors.bgbanner,
         color: layoutColors.bannerText,
         borderBottom: `1px solid ${layoutColors.bannerBorder}`,
       }}
@@ -97,7 +97,7 @@ export default function CompanyBanner({ companyInfo }: CompanyBannerProps) {
                   <Typography
                     variant="caption"
                     sx={{
-                      color: layoutColors.secondaryMenuText,
+                      color: layoutColors.bannerText,
                       fontSize: '0.75rem',
                     }}
                   >

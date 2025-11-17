@@ -1,10 +1,23 @@
+'use client';
+
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import MainLayout from '@/components/layout/MainLayout';
 import { companyInfo, menuConfig } from '@/config/menuConfig';
 import { Box, Typography, Paper, Grid, Card, CardContent } from '@mui/material';
 
 export default function Home() {
+  const router = useRouter();
+
+  useEffect(() => {
+    // 自动跳转到第一个可用页面
+    if (menuConfig[0]?.children?.[0]?.path) {
+      router.push(menuConfig[0].children[0].path);
+    }
+  }, [router]);
+
   return (
-    <MainLayout companyInfo={companyInfo} primaryMenuItems={menuConfig}>
+    <MainLayout companyInfo={companyInfo} menuItems={menuConfig}>
       <Box>
         <Typography variant="h4" gutterBottom fontWeight="bold">
           欢迎使用企业管理系统

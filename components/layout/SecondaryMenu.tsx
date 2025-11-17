@@ -18,6 +18,7 @@ import {
   ChevronLeft,
   ChevronRight,
 } from '@mui/icons-material';
+import { useRouter, usePathname } from 'next/navigation';
 import { MenuItem } from './types';
 import { layoutColors } from '@/app/theme';
 
@@ -39,12 +40,20 @@ function MenuItemComponent({
   level?: number;
   collapsed: boolean;
 }) {
+  const router = useRouter();
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const hasChildren = item.children && item.children.length > 0;
+
+  // 检查当前菜单项是否被选中
+  const isSelected = pathname === item.path;
 
   const handleClick = () => {
     if (hasChildren) {
       setOpen(!open);
+    } else if (item.path) {
+      // 如果没有子菜单且有路径,则进行路由跳转
+      router.push(item.path);
     }
   };
 
@@ -52,6 +61,7 @@ function MenuItemComponent({
     <>
       <ListItemButton
         onClick={handleClick}
+        selected={isSelected}
         sx={{
           mx: 1,
           mb: 0.5,
@@ -68,11 +78,12 @@ function MenuItemComponent({
             color: layoutColors.secondaryMenuActive,
           },
           '&.Mui-selected': {
-            bgcolor: 'rgba(0, 0, 0, 0.04)',
+            bgcolor: layoutColors.secondaryMenuSelected,
             color: layoutColors.secondaryMenuActive,
             fontWeight: 500,
             '&:hover': {
-              bgcolor: 'rgba(0, 0, 0, 0.06)',
+              bgcolor: layoutColors.secondaryMenuSelected,
+              filter: 'brightness(0.95)',
             },
           },
         }}

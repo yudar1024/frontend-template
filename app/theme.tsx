@@ -26,10 +26,12 @@ const theme = createTheme({
 
 // 导出自定义颜色供布局组件使用 - Vercel v0 风格
 export const layoutColors = {
-  // Banner - 纯白背景,黑色文字
-  banner: '#ffffff',
-  bannerText: '#0a0a0a',
-  bannerBorder: '#e5e5e5',
+  // Banner - 科技淡蓝色背景
+  banner: '#e3f2fd',
+    bgbanner: '#1694f1',
+
+    bannerText: '#ffffff',
+  bannerBorder: '#bbdefb',
 
   // Primary Menu - 浅灰背景
   primaryMenu: '#fafafa',
@@ -44,6 +46,7 @@ export const layoutColors = {
   secondaryMenuText: '#737373',
   secondaryMenuActive: '#0a0a0a',
   secondaryMenuHover: '#f9fafb',
+  secondaryMenuSelected: '#e3f2fd', // 选中状态背景 - 科技淡蓝色
   secondaryMenuBorder: '#e5e5e5',
   secondaryMenuIcon: '#a3a3a3',
 };

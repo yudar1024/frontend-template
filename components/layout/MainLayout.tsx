@@ -1,7 +1,8 @@
 'use client';
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { Box, CssBaseline } from '@mui/material';
+import { usePathname } from 'next/navigation';
 import CompanyBanner from './CompanyBanner';
 import PrimaryMenu from './PrimaryMenu';
 import SecondaryMenu from './SecondaryMenu';
@@ -9,27 +10,58 @@ import { CompanyInfo, MenuItem } from './types';
 
 interface MainLayoutProps {
   companyInfo: CompanyInfo;
-  primaryMenuItems: MenuItem[];
+  menuItems: MenuItem[];
   children: React.ReactNode;
 }
 
 export default function MainLayout({
   companyInfo,
-  primaryMenuItems,
+  menuItems,
   children,
 }: MainLayoutProps) {
+  const pathname = usePathname();
   const [activeMenu, setActiveMenu] = useState<string>(
-    primaryMenuItems[0]?.id || ''
+    menuItems[0]?.id || ''
   );
   const [sidebarOpen, setSidebarOpen] = useState(true);
 
+  // 根据当前路径自动设置活动菜单
+  useEffect(() => {
+    // 查找匹配当前路径的菜单项
+    for (const menu of menuItems) {
+      // 检查一级菜单路径
+      if (pathname.startsWith(menu.path)) {
+        setActiveMenu(menu.id);
+        return;
+      }
+      // 检查二级菜单路径
+      if (menu.children) {
+        for (const child of menu.children) {
+          if (pathname.startsWith(child.path)) {
+            setActiveMenu(menu.id);
+            return;
+          }
+          // 检查三级菜单路径
+          if (child.children) {
+            for (const grandChild of child.children) {
+              if (pathname.startsWith(grandChild.path)) {
+                setActiveMenu(menu.id);
+                return;
+              }
+            }
+          }
+        }
+      }
+    }
+  }, [pathname, menuItems]);
+
   // 根据当前选中的一级菜单，获取对应的二级菜单
   const secondaryMenuItems = useMemo(() => {
-    const activeMenuItem = primaryMenuItems.find(
+    const activeMenuItem = menuItems.find(
       (item) => item.id === activeMenu
     );
     return activeMenuItem?.children || [];
-  }, [activeMenu, primaryMenuItems]);
+  }, [activeMenu, menuItems]);
 
   const handleMenuChange = (menuId: string) => {
     setActiveMenu(menuId);
@@ -49,7 +81,7 @@ export default function MainLayout({
       {/* Primary Menu */}
       <Box sx={{ mt: 8 }}>
         <PrimaryMenu
-          items={primaryMenuItems}
+          items={menuItems}
           activeMenu={activeMenu}
           onMenuChange={handleMenuChange}
           sidebarOpen={sidebarOpen}

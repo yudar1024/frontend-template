@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Tabs, Tab, Box } from '@mui/material';
+import { useRouter } from 'next/navigation';
 import { MenuItem } from './types';
 import { layoutColors } from '@/app/theme';
 
@@ -20,8 +21,24 @@ export default function PrimaryMenu({
   sidebarOpen = true,
   hasSecondaryMenu = false,
 }: PrimaryMenuProps) {
+  const router = useRouter();
+
   const handleChange = (_event: React.SyntheticEvent, newValue: string) => {
     onMenuChange(newValue);
+
+    // 获取选中的菜单项
+    const selectedItem = items.find(item => item.id === newValue);
+
+    // 如果有子菜单,跳转到第一个子菜单项
+    if (selectedItem?.children && selectedItem.children.length > 0) {
+      const firstChild = selectedItem.children[0];
+      if (firstChild.path) {
+        router.push(firstChild.path);
+      }
+    } else if (selectedItem?.path) {
+      // 如果没有子菜单,直接跳转到该菜单的路径
+      router.push(selectedItem.path);
+    }
   };
 
   // 根据侧边栏状态计算左侧偏移量

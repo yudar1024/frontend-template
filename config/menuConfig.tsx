@@ -15,10 +15,10 @@ import { MenuItem, CompanyInfo } from '@/components/layout/types';
 
 // 示例：公司信息配置
 export const companyInfo: CompanyInfo = {
-  name: '企业管理系统',
+  name: '可信数据空间',
   logo: '/logo.png', // 可选：公司Logo
   userInfo: {
-    name: '张三',
+    name: '吴希言',
     avatar: '/avatar.png', // 可选：用户头像
     role: '系统管理员',
   },
@@ -28,79 +28,45 @@ export const companyInfo: CompanyInfo = {
 export const menuConfig: MenuItem[] = [
   {
     id: 'dashboard',
-    label: '工作台',
+    label: '首页',
     icon: <Dashboard fontSize="small" />,
     path: '/dashboard',
     children: [
       {
         id: 'dashboard-overview',
-        label: '数据概览',
+        label: '首页',
         icon: <Assessment fontSize="small" />,
         path: '/dashboard/overview',
       },
-      {
-        id: 'dashboard-analytics',
-        label: '数据分析',
-        icon: <Assessment fontSize="small" />,
-        path: '/dashboard/analytics',
-      },
     ],
   },
   {
-    id: 'customers',
-    label: '客户管理',
+    id: 'linker',
+    label: '链接器',
     icon: <People fontSize="small" />,
-    path: '/customers',
+    path: '/linker',
     children: [
       {
-        id: 'customers-list',
-        label: '客户列表',
-        path: '/customers/list',
+        id: 'product',
+        label: '数据产品',
+        path: '/linker/product',
       },
       {
-        id: 'customers-groups',
-        label: '客户分组',
-        path: '/customers/groups',
+        id: 'data-assets',
+        label: '数据资产',
+        path: '/linker/data-assets',
         children: [
           {
-            id: 'customers-groups-enterprise',
-            label: '企业客户',
-            path: '/customers/groups/enterprise',
+            id: 'data-assets-local',
+            label: '本地数据源',
+            path: '/linker/data-assets/local',
           },
           {
-            id: 'customers-groups-individual',
+            id: 'data-assets-policy',
             label: '个人客户',
-            path: '/customers/groups/individual',
+            path: '/linker/data-assets/policy',
           },
         ],
-      },
-      {
-        id: 'customers-analysis',
-        label: '客户分析',
-        path: '/customers/analysis',
-      },
-    ],
-  },
-  {
-    id: 'products',
-    label: '产品管理',
-    icon: <Inventory fontSize="small" />,
-    path: '/products',
-    children: [
-      {
-        id: 'products-list',
-        label: '产品列表',
-        path: '/products/list',
-      },
-      {
-        id: 'products-categories',
-        label: '产品分类',
-        path: '/products/categories',
-      },
-      {
-        id: 'products-inventory',
-        label: '库存管理',
-        path: '/products/inventory',
       },
     ],
   },
@@ -115,56 +81,18 @@ export const menuConfig: MenuItem[] = [
         label: '全部订单',
         path: '/orders/all',
       },
-      {
-        id: 'orders-pending',
-        label: '待处理订单',
-        path: '/orders/pending',
-      },
-      {
-        id: 'orders-completed',
-        label: '已完成订单',
-        path: '/orders/completed',
-      },
     ],
   },
   {
-    id: 'finance',
-    label: '财务管理',
+    id: 'data-processing',
+    label: '数据平台',
     icon: <AccountBalance fontSize="small" />,
-    path: '/finance',
+    path: '/data-processing',
     children: [
       {
-        id: 'finance-income',
-        label: '收入管理',
-        path: '/finance/income',
-      },
-      {
-        id: 'finance-expense',
-        label: '支出管理',
-        path: '/finance/expense',
-      },
-      {
-        id: 'finance-reports',
-        label: '财务报表',
-        path: '/finance/reports',
-      },
-    ],
-  },
-  {
-    id: 'reports',
-    label: '报表中心',
-    icon: <Description fontSize="small" />,
-    path: '/reports',
-    children: [
-      {
-        id: 'reports-sales',
-        label: '销售报表',
-        path: '/reports/sales',
-      },
-      {
-        id: 'reports-performance',
-        label: '业绩报表',
-        path: '/reports/performance',
+        id: 'data-handling',
+        label: '数据加工',
+        path: '/data-processing',
       },
     ],
   },
