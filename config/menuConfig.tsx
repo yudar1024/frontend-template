@@ -116,10 +116,10 @@ export const menuConfig: MenuItem[] = [
         path: '/system/settings',
       },
       {
-        id: 'system-logs',
-        label: '操作日志',
+        id: 'organizations',
+        label: '组织',
         icon: <Description fontSize="small" />,
-        path: '/system/logs',
+        path: '/system/organizations',
       },
     ],
   },

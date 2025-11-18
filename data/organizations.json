@@ -1,0 +1,56 @@
+[
+  {
+    "id": "org-1",
+    "name": "研发部",
+    "description": "负责产品研发和技术创新",
+    "members": [
+      {
+        "id": "user-1",
+        "name": "张三",
+        "email": "zhangsan@example.com",
+        "role": "管理员"
+      },
+      {
+        "id": "user-2",
+        "name": "李四",
+        "email": "lisi@example.com",
+        "role": "开发人员"
+      }
+    ],
+    "createdAt": "2024-01-10T08:00:00.000Z"
+  },
+  {
+    "id": "org-2",
+    "name": "产品部",
+    "description": "负责产品规划和用户体验设计",
+    "members": [
+      {
+        "id": "user-4",
+        "name": "赵六",
+        "email": "zhaoliu@example.com",
+        "role": "产品经理"
+      },
+      {
+        "id": "user-5",
+        "name": "孙七",
+        "email": "sunqi@example.com",
+        "role": "设计师"
+      }
+    ],
+    "createdAt": "2024-02-15T09:30:00.000Z"
+  },
+  {
+    "id": "org-3",
+    "name": "测试部",
+    "description": "负责产品质量保证和测试",
+    "members": [
+      {
+        "id": "user-3",
+        "name": "王五",
+        "email": "wangwu@example.com",
+        "role": "测试人员"
+      }
+    ],
+    "createdAt": "2024-03-01T10:00:00.000Z"
+  }
+]
