@@ -1,0 +1,20 @@
+[
+  {
+    "id": "ds-001",
+    "name": "用户数据库",
+    "type": "database",
+    "databaseUrl": "mysql://localhost:3306/userdb",
+    "username": "admin",
+    "password": "******",
+    "createdAt": "2025-01-15T10:30:00Z",
+    "createdBy": "吴希言"
+  },
+  {
+    "id": "ds-002",
+    "name": "销售数据文件",
+    "type": "file",
+    "filePath": "/data/sales/2024_sales.csv",
+    "createdAt": "2025-01-10T14:20:00Z",
+    "createdBy": "吴希言"
+  }
+]
