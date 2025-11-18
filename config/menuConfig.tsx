@@ -16,7 +16,7 @@ import { MenuItem, CompanyInfo } from '@/components/layout/types';
 // 示例：公司信息配置
 export const companyInfo: CompanyInfo = {
   name: '可信数据空间',
-  logo: '/logo.png', // 可选：公司Logo
+  logo: '/img/logo.png', // 可选：公司Logo
   userInfo: {
     name: '吴希言',
     avatar: '/avatar.png', // 可选：用户头像
@@ -32,12 +32,12 @@ export const menuConfig: MenuItem[] = [
     icon: <Dashboard fontSize="small" />,
     path: '/dashboard',
     children: [
-      {
-        id: 'dashboard-overview',
-        label: '首页',
-        icon: <Assessment fontSize="small" />,
-        path: '/dashboard/overview',
-      },
+        {
+            id: 'trust-space',
+            label: '可信空间',
+            icon: <Assessment fontSize="small" />,
+            path: '/dashboard/trust-space',
+        },
     ],
   },
   {
@@ -60,11 +60,6 @@ export const menuConfig: MenuItem[] = [
             id: 'data-assets-local',
             label: '本地数据源',
             path: '/linker/data-assets/local',
-          },
-          {
-            id: 'data-assets-policy',
-            label: '个人客户',
-            path: '/linker/data-assets/policy',
           },
         ],
       },
