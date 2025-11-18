@@ -1,0 +1,53 @@
+[
+  {
+    "id": "prod-001",
+    "name": "用户行为分析数据集",
+    "dataFormat": "json",
+    "dataSourceId": "ds-001",
+    "dataSourceName": "用户数据库",
+    "productType": "data_model",
+    "billingMode": "monthly",
+    "dataTheme": "用户行为",
+    "dataAuthorization": "商业授权",
+    "applicationField": "finance",
+    "transferMode": "pull",
+    "tags": ["用户分析", "行为数据", "金融"],
+    "description": "包含用户浏览、购买、点击等行为数据的综合分析数据集",
+    "createdAt": "2025-01-15T10:30:00Z",
+    "createdBy": "吴希言"
+  },
+  {
+    "id": "prod-002",
+    "name": "销售数据报告",
+    "dataFormat": "pdf",
+    "dataSourceId": "ds-002",
+    "dataSourceName": "销售数据文件",
+    "productType": "report",
+    "billingMode": "one_time",
+    "dataTheme": "销售分析",
+    "dataAuthorization": "内部使用",
+    "applicationField": "trade",
+    "transferMode": "push",
+    "tags": ["销售", "报告", "贸易"],
+    "description": "2024年度销售数据综合分析报告，包含趋势分析和预测",
+    "createdAt": "2025-01-10T14:20:00Z",
+    "createdBy": "吴希言"
+  },
+  {
+    "id": "prod-003",
+    "name": "物流API接口",
+    "dataFormat": "json",
+    "dataSourceId": "ds-001",
+    "dataSourceName": "用户数据库",
+    "productType": "api",
+    "billingMode": "pay_as_you_go",
+    "dataTheme": "物流追踪",
+    "dataAuthorization": "开放授权",
+    "applicationField": "transport",
+    "transferMode": "pull",
+    "tags": ["API", "物流", "实时"],
+    "description": "提供实时物流信息查询和追踪服务的API接口",
+    "createdAt": "2025-01-08T09:15:00Z",
+    "createdBy": "吴希言"
+  }
+]
