@@ -1,13 +1,55 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PageContainer from '@/components/common/PageContainer';
-import DataCard from '@/components/common/DataCard';
-import EmptyState from '@/components/common/EmptyState';
+import OrderTable from '@/components/order/OrderTable';
+import OrderDialog from '@/components/order/OrderDialog';
 import { Button } from '@mui/material';
-import { Add, ShoppingCart } from '@mui/icons-material';
+import { Add } from '@mui/icons-material';
+import { getOrders, addOrder, updateOrderStatus, deleteOrder } from '@/services/orderService';
+import { getAllProducts } from '@/services/productService';
+import { Order } from '@/types/order';
+import { DataProduct } from '@/types/product';
 
 export default function AllOrdersPage() {
+  const [orders, setOrders] = useState<Order[]>([]);
+  const [products, setProducts] = useState<DataProduct[]>([]);
+  const [dialogOpen, setDialogOpen] = useState(false);
+
+  useEffect(() => {
+    loadInitialData();
+  }, []);
+
+  const loadInitialData = async () => {
+    const [orderList, productList] = await Promise.all([getOrders(), getAllProducts()]);
+    setOrders(orderList);
+    setProducts(productList);
+  };
+
+  const handleAddOrder = () => {
+    setDialogOpen(true);
+  };
+
+  const handleDeleteOrder = async (orderId: string) => {
+    await deleteOrder(orderId);
+    loadInitialData();
+  };
+
+  const handleUpdateStatus = async (orderId: string, status: Order['status']) => {
+    await updateOrderStatus(orderId, status);
+    loadInitialData();
+  };
+
+  const handleDialogClose = () => {
+    setDialogOpen(false);
+  };
+
+  const handleDialogSubmit = async (data: any) => {
+    await addOrder(data);
+    loadInitialData();
+    handleDialogClose();
+  };
+
   return (
     <PageContainer
       title="全部订单"
@@ -20,6 +62,7 @@ export default function AllOrdersPage() {
         <Button
           variant="contained"
           startIcon={<Add />}
+          onClick={handleAddOrder}
           sx={{
             bgcolor: '#0a0a0a',
             color: '#ffffff',
@@ -34,17 +77,13 @@ export default function AllOrdersPage() {
         </Button>
       }
     >
-      <DataCard>
-        <EmptyState
-          icon={<ShoppingCart />}
-          title="暂无订单"
-          description="创建您的第一个订单,开始管理订单流程"
-          action={{
-            label: '新建订单',
-            onClick: () => console.log('Create order'),
-          }}
-        />
-      </DataCard>
+      <OrderTable orders={orders} onUpdateStatus={handleUpdateStatus} onDelete={handleDeleteOrder} />
+      <OrderDialog
+        open={dialogOpen}
+        products={products}
+        onClose={handleDialogClose}
+        onSubmit={handleDialogSubmit}
+      />
     </PageContainer>
   );
 }

@@ -1,0 +1,11 @@
+[
+  {
+    "id": "1",
+    "productId": "prod-001",
+    "price": 100,
+    "purchaseType": "buyout",
+    "status": "pending_payment",
+    "createdBy": "user1",
+    "createdAt": "2023-01-01T12:00:00Z"
+  }
+]
