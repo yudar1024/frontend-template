@@ -12,7 +12,7 @@ import {
   Tooltip,
   Checkbox,
 } from '@mui/material';
-import { Edit, Delete, MoreVert } from '@mui/icons-material';
+import { Edit, Delete, MoreVert, GroupAdd, Check } from '@mui/icons-material';
 import { TrustSpace } from '@/types/trustSpace';
 import { format } from 'date-fns';
 import { zhCN } from 'date-fns/locale';
@@ -20,17 +20,21 @@ import { zhCN } from 'date-fns/locale';
 interface SpaceCardProps {
   space: TrustSpace;
   selected: boolean;
+  currentUser: string;
   onSelect: (id: string) => void;
   onEdit: (space: TrustSpace) => void;
   onDelete: (id: string) => void;
+  onJoin: (id: string) => void;
 }
 
 export default function SpaceCard({
   space,
   selected,
+  currentUser,
   onSelect,
   onEdit,
   onDelete,
+  onJoin,
 }: SpaceCardProps) {
   const formatDate = (dateString: string) => {
     try {
@@ -39,6 +43,8 @@ export default function SpaceCard({
       return dateString;
     }
   };
+  
+  const isMember = space.members?.includes(currentUser);
 
   return (
     <Card
@@ -166,12 +172,48 @@ export default function SpaceCard({
       {/* 操作按钮 */}
       <CardActions
         sx={{
-          justifyContent: 'flex-end',
+          justifyContent: 'space-between',
           px: 2,
           pb: 2,
           pt: 0,
         }}
       >
+        <Box>
+          {!isMember ? (
+            <Tooltip title="加入空间">
+              <IconButton
+                size="small"
+                onClick={() => onJoin(space.id)}
+                sx={{
+                  color: '#737373',
+                  '&:hover': {
+                    color: '#0a0a0a',
+                    bgcolor: '#f5f5f5',
+                  },
+                }}
+              >
+                <GroupAdd fontSize="small" />
+              </IconButton>
+            </Tooltip>
+          ) : (
+            <Tooltip title="已加入">
+              <Box
+                sx={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  color: '#10b981',
+                  p: 0.5,
+                }}
+              >
+                <Check fontSize="small" />
+                <Typography variant="caption" sx={{ ml: 0.5, fontWeight: 500 }}>
+                  已加入
+                </Typography>
+              </Box>
+            </Tooltip>
+          )}
+        </Box>
+        <Box>
         <Tooltip title="编辑">
           <IconButton
             size="small"
@@ -202,6 +244,7 @@ export default function SpaceCard({
             <Delete fontSize="small" />
           </IconButton>
         </Tooltip>
+        </Box>
       </CardActions>
     </Card>
   );

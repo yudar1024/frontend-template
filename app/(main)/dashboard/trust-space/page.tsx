@@ -30,6 +30,7 @@ import {
   deleteTrustSpace,
   batchDeleteTrustSpaces,
   initializeTrustSpacesFromLocalStorage,
+  joinTrustSpace,
 } from '@/services/trustSpaceService';
 
 export default function TrustSpacePage() {
@@ -49,8 +50,14 @@ export default function TrustSpacePage() {
     severity: 'success' as 'success' | 'error' | 'info' | 'warning',
   });
 
-  // 当前用户
-  const currentUser = '吴希言';
+  // 当前用户 (使用ID)
+  // In a real app, this would come from auth context. 
+  // For this demo, we use a fixed ID that corresponds to "吴希言" if we had a user map, 
+  // or just use the name if we decided to store names.
+  // Based on previous steps, we are storing IDs in `members`.
+  // Let's assume "1" is the ID for "Admin User" which we saw in users.json.
+  // Let's use "1" as the current user ID for testing "Join".
+  const currentUser = '1';
 
   // 初始化数据
   useEffect(() => {
@@ -170,6 +177,20 @@ export default function TrustSpacePage() {
     }
   };
 
+  const handleJoin = async (id: string) => {
+    try {
+      const success = await joinTrustSpace(id, currentUser);
+      if (success) {
+        showToast('成功加入空间', 'success');
+        loadSpaces();
+      } else {
+        showToast('加入失败或已加入', 'warning');
+      }
+    } catch (error) {
+      showToast('加入失败', 'error');
+    }
+  };
+
   const handleRefresh = () => {
     loadSpaces();
     showToast('数据已刷新', 'info');
@@ -278,13 +299,15 @@ export default function TrustSpacePage() {
           {/* 卡片网格 */}
           <Grid container spacing={3}>
             {spaces.map((space) => (
-              <Grid size={4} xs={12} sm={6} md={4} lg={3} key={space.id}>
+              <Grid size={{ xs: 12, sm: 6, md: 4, lg: 3 }} key={space.id}>
                 <SpaceCard
                   space={space}
                   selected={selected.includes(space.id)}
+                  currentUser={currentUser}
                   onSelect={handleSelectOne}
                   onEdit={handleEdit}
                   onDelete={handleDeleteClick}
+                  onJoin={handleJoin}
                 />
               </Grid>
             ))}

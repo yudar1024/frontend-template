@@ -139,11 +139,6 @@ export const menuConfig: MenuItem[] = [
         label: '常见问题',
         path: '/help/faq',
       },
-      {
-        id: 'help-support',
-        label: '技术支持',
-        path: '/help/support',
-      },
     ],
   },
 ];

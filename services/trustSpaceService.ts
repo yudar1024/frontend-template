@@ -33,6 +33,7 @@ export const createTrustSpace = async (input: CreateTrustSpaceInput): Promise<Tr
     name: input.name,
     description: input.description,
     logo: input.logo,
+    members: input.members || [],
     createdAt: new Date().toISOString(),
     createdBy: input.createdBy,
   };
@@ -60,7 +61,9 @@ export const updateTrustSpace = async (input: UpdateTrustSpaceInput): Promise<Tr
     ...trustSpacesStore[index],
     ...(input.name && { name: input.name }),
     ...(input.description !== undefined && { description: input.description }),
+    ...(input.description !== undefined && { description: input.description }),
     ...(input.logo !== undefined && { logo: input.logo }),
+    ...(input.members !== undefined && { members: input.members }),
     updatedAt: new Date().toISOString(),
   };
 
@@ -105,6 +108,33 @@ export const batchDeleteTrustSpaces = async (ids: string[]): Promise<number> => 
   }
 
   return deletedCount;
+};
+
+// 加入可信空间
+export const joinTrustSpace = async (spaceId: string, userId: string): Promise<boolean> => {
+  await new Promise(resolve => setTimeout(resolve, 300));
+
+  const index = trustSpacesStore.findIndex(s => s.id === spaceId);
+  if (index === -1) {
+    return false;
+  }
+
+  const space = trustSpacesStore[index];
+  if (!space.members) {
+    space.members = [];
+  }
+
+  if (!space.members.includes(userId)) {
+    space.members.push(userId);
+    
+    // 保存到本地存储
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('trustSpaces', JSON.stringify(trustSpacesStore));
+    }
+    return true;
+  }
+
+  return false;
 };
 
 // 从本地存储初始化

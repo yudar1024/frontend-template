@@ -5,7 +5,8 @@
     "description": "为企业间数据安全交换提供可信环境，支持多方协作和数据共享治理",
     "logo": "/img/tspace.png",
     "createdAt": "2025-01-15T10:30:00Z",
-    "createdBy": "协鑫集团"
+    "createdBy": "协鑫集团",
+    "members": []
   },
   {
     "id": "space-002",
@@ -13,7 +14,8 @@
     "description": "专为金融行业打造的数据可信流通环境，确保数据隐私和合规性",
     "logo": "/img/tspace.png",
     "createdAt": "2025-01-10T14:20:00Z",
-    "createdBy": "平安金融"
+    "createdBy": "平安金融",
+    "members": []
   },
   {
     "id": "space-003",
@@ -21,7 +23,8 @@
     "description": "医疗机构间的数据共享平台，保障患者隐私的同时促进医疗数据流通",
     "logo": "/img/tspace.png",
     "createdAt": "2025-01-08T09:15:00Z",
-    "createdBy": "上海数据集团"
+    "createdBy": "上海数据集团",
+    "members": []
   },
   {
     "id": "space-004",
@@ -29,6 +32,7 @@
     "description": "政府部门间数据安全共享平台，提升政务服务效率和数据利用价值",
     "logo": "/img/tspace.png",
     "createdAt": "2025-01-05T16:45:00Z",
-    "createdBy": "上海数据集团"
+    "createdBy": "上海数据集团",
+    "members": []
   }
 ]

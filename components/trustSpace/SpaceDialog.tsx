@@ -13,6 +13,9 @@ import {
 } from '@mui/material';
 import { Close } from '@mui/icons-material';
 import { TrustSpace } from '@/types/trustSpace';
+import { User } from '@/types/user';
+import { getAllUsers } from '@/services/userService';
+import { Autocomplete } from '@mui/material';
 
 interface SpaceDialogProps {
   open: boolean;
@@ -33,9 +36,19 @@ export default function SpaceDialog({
     name: '',
     description: '',
     logo: '',
+    members: [] as string[],
   });
 
+  const [users, setUsers] = useState<User[]>([]);
   const [errors, setErrors] = useState<Record<string, string>>({});
+
+  useEffect(() => {
+    const fetchUsers = async () => {
+      const data = await getAllUsers();
+      setUsers(data);
+    };
+    fetchUsers();
+  }, []);
 
   useEffect(() => {
     if (editData) {
@@ -43,12 +56,14 @@ export default function SpaceDialog({
         name: editData.name,
         description: editData.description,
         logo: editData.logo || '',
+        members: editData.members || [],
       });
     } else {
       setFormData({
         name: '',
         description: '',
         logo: '',
+        members: [],
       });
     }
     setErrors({});
@@ -89,6 +104,7 @@ export default function SpaceDialog({
       name: formData.name,
       description: formData.description,
       logo: formData.logo || undefined,
+      members: formData.members,
       ...(!editData && { createdBy: currentUser }),
     };
 
@@ -149,6 +165,24 @@ export default function SpaceDialog({
             helperText="输入图片URL地址，留空则使用默认图片"
             fullWidth
             size="small"
+          />
+
+          <Autocomplete
+            multiple
+            options={users}
+            getOptionLabel={(option) => option.name}
+            value={users.filter(user => formData.members.includes(user.id))}
+            onChange={(_, newValue) => {
+              handleChange('members', newValue.map(user => user.id));
+            }}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                label="成员"
+                placeholder="选择成员"
+                size="small"
+              />
+            )}
           />
         </Box>
       </DialogContent>
