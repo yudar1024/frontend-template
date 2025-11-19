@@ -15,7 +15,7 @@ import { MenuItem, CompanyInfo } from '@/components/layout/types';
 
 // 示例：公司信息配置
 export const companyInfo: CompanyInfo = {
-  name: '可信数据空间',
+  name: 'GCL-可信数据空间',
   logo: '/img/logo.png', // 可选：公司Logo
   userInfo: {
     name: '吴希言',

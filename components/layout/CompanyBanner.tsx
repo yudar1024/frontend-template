@@ -42,7 +42,7 @@ export default function CompanyBanner({ companyInfo }: CompanyBannerProps) {
             component="div"
             sx={{
               fontWeight: 600,
-              fontSize: '1.125rem',
+              fontSize: '1.8rem',
               letterSpacing: '-0.01em',
             }}
           >

@@ -3,32 +3,32 @@
     "id": "space-001",
     "name": "企业数据交换空间",
     "description": "为企业间数据安全交换提供可信环境，支持多方协作和数据共享治理",
-    "logo": "https://via.placeholder.com/150/0066cc/ffffff?text=企业",
+    "logo": "/img/tspace.png",
     "createdAt": "2025-01-15T10:30:00Z",
-    "createdBy": "吴希言"
+    "createdBy": "协鑫集团"
   },
   {
     "id": "space-002",
     "name": "金融数据可信空间",
     "description": "专为金融行业打造的数据可信流通环境，确保数据隐私和合规性",
-    "logo": "https://via.placeholder.com/150/00aa66/ffffff?text=金融",
+    "logo": "/img/tspace.png",
     "createdAt": "2025-01-10T14:20:00Z",
-    "createdBy": "吴希言"
+    "createdBy": "平安金融"
   },
   {
     "id": "space-003",
     "name": "医疗健康数据空间",
     "description": "医疗机构间的数据共享平台，保障患者隐私的同时促进医疗数据流通",
-    "logo": "https://via.placeholder.com/150/cc0066/ffffff?text=医疗",
+    "logo": "/img/tspace.png",
     "createdAt": "2025-01-08T09:15:00Z",
-    "createdBy": "吴希言"
+    "createdBy": "上海数据集团"
   },
   {
     "id": "space-004",
     "name": "政务数据共享空间",
     "description": "政府部门间数据安全共享平台，提升政务服务效率和数据利用价值",
-    "logo": "https://via.placeholder.com/150/ff6600/ffffff?text=政务",
+    "logo": "/img/tspace.png",
     "createdAt": "2025-01-05T16:45:00Z",
-    "createdBy": "吴希言"
+    "createdBy": "上海数据集团"
   }
 ]

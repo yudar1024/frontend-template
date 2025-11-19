@@ -137,7 +137,7 @@ export default function SpaceCard({
               variant="caption"
               sx={{ color: '#a3a3a3', fontSize: '0.75rem' }}
             >
-              创建人:
+              创建企业:
             </Typography>
             <Typography
               variant="caption"
