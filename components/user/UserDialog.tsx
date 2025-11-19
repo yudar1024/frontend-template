@@ -94,8 +94,20 @@ export default function UserDialog({
         />
       </DialogContent>
       <DialogActions>
-        <Button onClick={onClose}>取消</Button>
-        <Button onClick={handleSubmit} variant="contained">
+        <Button onClick={onClose} sx={{
+            textTransform: 'none',
+            color: '#737373',
+            '&:hover': { bgcolor: '#f5f5f5' },
+          }}
+        >取消</Button>
+        <Button onClick={handleSubmit} variant="contained" 
+         sx={{
+            textTransform: 'none',
+            bgcolor: '#0a0a0a',
+            fontWeight: 500,
+            '&:hover': { bgcolor: '#404040' },
+          }}
+        >
           {editData ? '保存' : '创建'}
         </Button>
       </DialogActions>
