@@ -1,47 +1,10 @@
 [
   {
-    "id": "user-1",
-    "name": "张三",
-    "email": "zhangsan@example.com",
-    "role": "管理员",
-    "avatar": "",
-    "status": "active",
-    "createdAt": "2024-01-15T08:00:00.000Z"
-  },
-  {
-    "id": "user-2",
-    "name": "李四",
-    "email": "lisi@example.com",
-    "role": "开发人员",
-    "avatar": "",
-    "status": "active",
-    "createdAt": "2024-02-10T09:30:00.000Z"
-  },
-  {
-    "id": "user-3",
-    "name": "王五",
-    "email": "wangwu@example.com",
-    "role": "测试人员",
-    "avatar": "",
-    "status": "active",
-    "createdAt": "2024-03-05T10:15:00.000Z"
-  },
-  {
-    "id": "user-4",
-    "name": "赵六",
-    "email": "zhaoliu@example.com",
-    "role": "产品经理",
-    "avatar": "",
-    "status": "active",
-    "createdAt": "2024-03-20T11:00:00.000Z"
-  },
-  {
-    "id": "user-5",
-    "name": "孙七",
-    "email": "sunqi@example.com",
-    "role": "设计师",
-    "avatar": "",
-    "status": "active",
-    "createdAt": "2024-04-01T14:20:00.000Z"
+    "id": "1",
+    "name": "Admin User",
+    "email": "admin@example.com",
+    "phone": "1234567890",
+    "createdBy": "System",
+    "createdAt": "2023-01-01T12:00:00Z"
   }
 ]

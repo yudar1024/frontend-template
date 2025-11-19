@@ -1,13 +1,58 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PageContainer from '@/components/common/PageContainer';
-import DataCard from '@/components/common/DataCard';
-import EmptyState from '@/components/common/EmptyState';
+import UserTable from '@/components/user/UserTable';
+import UserDialog from '@/components/user/UserDialog';
 import { Button } from '@mui/material';
-import { Add, People } from '@mui/icons-material';
+import { Add } from '@mui/icons-material';
+import { getAllUsers, addUser, updateUser, deleteUser } from '@/services/userService';
+import { User } from '@/types/user';
 
 export default function UsersPage() {
+  const [users, setUsers] = useState<User[]>([]);
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [editUser, setEditUser] = useState<User | null>(null);
+
+  useEffect(() => {
+    loadUsers();
+  }, []);
+
+  const loadUsers = async () => {
+    const userList = await getAllUsers();
+    setUsers(userList);
+  };
+
+  const handleAddUser = () => {
+    setEditUser(null);
+    setDialogOpen(true);
+  };
+
+  const handleEditUser = (user: User) => {
+    setEditUser(user);
+    setDialogOpen(true);
+  };
+
+  const handleDeleteUser = async (userId: string) => {
+    await deleteUser(userId);
+    loadUsers();
+  };
+
+  const handleDialogClose = () => {
+    setDialogOpen(false);
+    setEditUser(null);
+  };
+
+  const handleDialogSubmit = async (data: any) => {
+    if (editUser) {
+      await updateUser({ ...editUser, ...data });
+    } else {
+      await addUser(data);
+    }
+    loadUsers();
+    handleDialogClose();
+  };
+
   return (
     <PageContainer
       title="用户管理"
@@ -20,6 +65,7 @@ export default function UsersPage() {
         <Button
           variant="contained"
           startIcon={<Add />}
+          onClick={handleAddUser}
           sx={{
             bgcolor: '#0a0a0a',
             color: '#ffffff',
@@ -34,17 +80,13 @@ export default function UsersPage() {
         </Button>
       }
     >
-      <DataCard>
-        <EmptyState
-          icon={<People />}
-          title="暂无用户"
-          description="添加系统用户,管理用户权限和角色"
-          action={{
-            label: '添加用户',
-            onClick: () => console.log('Add user'),
-          }}
-        />
-      </DataCard>
+      <UserTable users={users} onEdit={handleEditUser} onDelete={handleDeleteUser} />
+      <UserDialog
+        open={dialogOpen}
+        editData={editUser}
+        onClose={handleDialogClose}
+        onSubmit={handleDialogSubmit}
+      />
     </PageContainer>
   );
 }
