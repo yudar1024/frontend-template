@@ -1,0 +1,22 @@
+[
+  {
+    "id": "reg-001",
+    "platform": "国家公共数据登记平台",
+    "dataSourceId": "ds-001",
+    "dataSourceName": "用户数据库",
+    "name": "用户行为分析数据集",
+    "hash": "0x8f434346648f6b96df89dda901c5176b10a6d83961dd3c1ac88b59b2dc327aa4",
+    "registeredAt": "2025-01-18T09:00:00Z",
+    "status": "Registered"
+  },
+  {
+    "id": "reg-002",
+    "platform": "第三方数据交易平台",
+    "dataSourceId": "ds-002",
+    "dataSourceName": "销售数据文件",
+    "name": "2024年度销售报表",
+    "hash": "0x2d711642b726b04401627ca9fbac32f5c8530fb1903cc4db02258717921a4881",
+    "registeredAt": "2025-01-19T14:30:00Z",
+    "status": "Registered"
+  }
+]

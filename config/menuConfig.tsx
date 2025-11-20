@@ -61,6 +61,11 @@ export const menuConfig: MenuItem[] = [
             label: '本地数据源',
             path: '/linker/data-assets/local',
           },
+          {
+            id: 'data-assets-register',
+            label: '资产登记',
+            path: '/linker/data-assets/register',
+          },
         ],
       },
     ],
