@@ -48,7 +48,7 @@ interface AssetRegistration {
   name: string;
   hash: string;
   registeredAt: string;
-  status: 'Registered' | 'Pending';
+  status: '已登记' | '未登记';
 }
 
 const PLATFORMS = [
