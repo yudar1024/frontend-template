@@ -146,4 +146,17 @@ export const menuConfig: MenuItem[] = [
       },
     ],
   },
+  {
+    id: 'spaceops',
+    label: '空间运营',
+    icon: <ShoppingCart fontSize="small" />,
+    path: '/spaceops',
+    children: [
+      {
+        id: 'browse',
+        label: '空间浏览',
+        path: '/spaceops/browse',
+      },
+    ],
+  },
 ];
